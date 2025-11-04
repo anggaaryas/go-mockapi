@@ -3,7 +3,7 @@ package ginrouter
 import (
 	"strconv"
 
-	"github.com/anggaaryas/go-mockapi/mockapi"
+	"github.com/anggaaryas/go-mockapi"
 	"github.com/gin-gonic/gin"
 )
 
