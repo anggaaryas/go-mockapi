@@ -2,8 +2,6 @@ package ginrouter
 
 import (
 	"fmt"
-
-	"github.com/gin-gonic/gin"
 )
 
 // BadRequestError represents a bad request error with a message.
