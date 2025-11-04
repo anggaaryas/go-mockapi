@@ -43,7 +43,7 @@ func (cfg *config) getErrorResponse(err error) mockapi.APIError {
 
 func (cfg *config) SetupMockApiRoute(service mockapi.Service) error {
 
-	cfg.r.StaticFS("/static", http.FS(mockapi.GetStaticFiles()))
+	cfg.r.StaticFS(mockapi.GetStaticPath(), http.FS(mockapi.GetStaticFiles()))
 
 	api := cfg.r.Group("/api")
 
