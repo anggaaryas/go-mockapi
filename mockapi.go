@@ -1,5 +1,16 @@
 package mockapi
 
+import (
+	"embed"
+)
+
+//go:embed static/*
+var staticFiles embed.FS
+
+func GetStaticFiles() embed.FS {
+	return staticFiles
+}
+
 type DataSource interface {
 	PopulateData() error
 	GetBookByID(id string) (Book, error)
