@@ -1,7 +1,6 @@
 package ginrouter
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -46,8 +45,7 @@ func (cfg *config) SetupMockApiRoute(service mockapi.Service) error {
 
 	cfg.r.StaticFS(mockapi.GetMockapiPath(), http.FS(mockapi.GetStaticFiles()))
 
-	groupPath := fmt.Sprintf("%s/api/v1", mockapi.GetMockapiPath())
-	api := cfg.r.Group(groupPath)
+	api := cfg.r.Group("/api")
 
 	api.GET("/books/:id", func(c *gin.Context) {
 		id := c.Param("id")
