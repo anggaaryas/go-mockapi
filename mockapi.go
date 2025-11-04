@@ -8,6 +8,7 @@ import (
 var staticFiles embed.FS
 
 var mockapiPath = "/mockapi"
+var mockapiStaticImagePath = mockapiPath + "/static/image/"
 
 func GetStaticFiles() embed.FS {
 	return staticFiles
@@ -15,6 +16,10 @@ func GetStaticFiles() embed.FS {
 
 func GetMockapiPath() string {
 	return mockapiPath
+}
+
+func GetMockapiStaticImagePath() string {
+	return mockapiStaticImagePath
 }
 
 type DataSource interface {
