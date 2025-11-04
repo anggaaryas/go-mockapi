@@ -1,5 +1,5 @@
-github.com/anggaaryas/go-mockapi v0.0.0-20251104120923-3bfe30c5cef6 h1:pFl7XULAlpGUlzzpVk2IubcXoQWWqY4DPHMvyhKA9Gg=
-github.com/anggaaryas/go-mockapi v0.0.0-20251104120923-3bfe30c5cef6/go.mod h1:rOXlIUccap2eKtL3DrVo04NaYKRDYgNom7SOKfi/cgU=
+github.com/anggaaryas/go-mockapi v0.1.0 h1:LGGTW6GQZRJnlcaHQq4mHUietWrsfX5VDCSRpl9T4YQ=
+github.com/anggaaryas/go-mockapi v0.1.0/go.mod h1:rOXlIUccap2eKtL3DrVo04NaYKRDYgNom7SOKfi/cgU=
 github.com/bytedance/gopkg v0.1.3 h1:TPBSwH8RsouGCBcMBktLt1AymVo2TVsBVCY4b6TnZ/M=
 github.com/bytedance/gopkg v0.1.3/go.mod h1:576VvJ+eJgyCzdjS+c4+77QF3p7ubbtiKARP3TxducM=
 github.com/bytedance/sonic v1.14.2 h1:k1twIoe97C1DtYUo+fZQy865IuHia4PR5RPiuGPPIIE=
