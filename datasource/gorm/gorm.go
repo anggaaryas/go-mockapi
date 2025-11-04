@@ -21,7 +21,7 @@ func getBaseURL() string {
 }
 
 func getCoverURL(filename string) string {
-	return fmt.Sprintf("%s%s/%s", getBaseURL(), mockapi.GetMockapiPath(), filename)
+	return fmt.Sprintf("%s%s%s", getBaseURL(), mockapi.GetMockapiStaticImagePath(), filename)
 }
 
 func Create(db *gorm.DB) mockapi.DataSource {
