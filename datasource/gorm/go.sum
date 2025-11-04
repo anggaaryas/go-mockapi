@@ -1,5 +1,5 @@
-github.com/anggaaryas/go-mockapi v0.0.0-20251104113849-a5c349662c86 h1:iq+h4y0n3zyO9mlDfWIlCcviYmRy1PeGy6rKY0Q5vok=
-github.com/anggaaryas/go-mockapi v0.0.0-20251104113849-a5c349662c86/go.mod h1:rOXlIUccap2eKtL3DrVo04NaYKRDYgNom7SOKfi/cgU=
+github.com/anggaaryas/go-mockapi v0.0.0-20251104120923-3bfe30c5cef6 h1:pFl7XULAlpGUlzzpVk2IubcXoQWWqY4DPHMvyhKA9Gg=
+github.com/anggaaryas/go-mockapi v0.0.0-20251104120923-3bfe30c5cef6/go.mod h1:rOXlIUccap2eKtL3DrVo04NaYKRDYgNom7SOKfi/cgU=
 github.com/jinzhu/inflection v1.0.0 h1:K317FqzuhWc8YvSVlFMCCUb36O/S9MCKRDI7QkRKD/E=
 github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
 github.com/jinzhu/now v1.1.5 h1:/o9tlHleP7gOFmsnYNz3RGnqzefHA47wQpKrrdTIwXQ=
