@@ -1,6 +1,7 @@
 package ginrouter
 
 import (
+	"net/http"
 	"strconv"
 
 	"github.com/anggaaryas/go-mockapi"
@@ -41,6 +42,9 @@ func (cfg *config) getErrorResponse(err error) mockapi.APIError {
 }
 
 func (cfg *config) SetupMockApiRoute(service mockapi.Service) error {
+
+	cfg.r.StaticFS("/static", http.FS(mockapi.GetStaticFiles()))
+
 	api := cfg.r.Group("/api")
 
 	api.GET("/books/:id", func(c *gin.Context) {

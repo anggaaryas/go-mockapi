@@ -1,6 +1,9 @@
 package gormsql
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/anggaaryas/go-mockapi"
 	"gorm.io/gorm"
 )
@@ -9,8 +12,16 @@ type dataSource struct {
 	db *gorm.DB
 }
 
+func getBaseURL() string {
+	baseURL := os.Getenv("BASE_URL")
+	if baseURL == "" {
+		baseURL = "http://localhost:8080"
+	}
+	return baseURL
+}
+
 func getCoverURL(filename string) string {
-	return "https://example.com/covers/" + filename
+	return fmt.Sprintf("%s/static/image/%s", getBaseURL(), filename)
 }
 
 func Create(db *gorm.DB) mockapi.DataSource {
@@ -109,11 +120,36 @@ func (ds *dataSource) GetBookByID(id string) (mockapi.Book, error) {
 	return book, nil
 }
 
-func (ds *dataSource) GetBooks(page int, pageSize int) ([]mockapi.Book, error) {
+func (ds *dataSource) GetBooks(page int, pageSize int, search string) ([]mockapi.Book, error) {
 	var books []mockapi.Book
 	offset := (page - 1) * pageSize
+	
+	if search != "" {
+		searchPattern := "%" + search + "%"
+		if err := ds.db.Offset(offset).Limit(pageSize).Where("title LIKE ? OR author LIKE ?", searchPattern, searchPattern).Find(&books).Error; err != nil {
+			return nil, err
+		}
+		return books, nil
+	}
+
 	if err := ds.db.Offset(offset).Limit(pageSize).Find(&books).Error; err != nil {
 		return nil, err
 	}
 	return books, nil
+}
+
+func (ds *dataSource) GetBooksCount(search string) (int64, error) {
+	var count int64
+	if search != "" {
+		searchPattern := "%" + search + "%"
+		if err := ds.db.Model(&mockapi.Book{}).Where("title LIKE ? OR author LIKE ?", searchPattern, searchPattern).Count(&count).Error; err != nil {
+			return 0, err
+		}
+		return count, nil
+	}
+
+	if err := ds.db.Model(&mockapi.Book{}).Count(&count).Error; err != nil {
+		return 0, err
+	}
+	return count, nil
 }

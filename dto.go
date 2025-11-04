@@ -4,7 +4,7 @@ type PaginatedBooks struct {
 	Data       []Book `json:"data"`
 	Page       int    `json:"page"`
 	PageSize   int    `json:"page_size"`
-	TotalItems int    `json:"total_items"`
+	TotalItems int64  `json:"total_items"`
 	TotalPages int    `json:"total_pages"`
 }
 

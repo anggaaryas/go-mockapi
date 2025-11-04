@@ -14,7 +14,8 @@ func GetStaticFiles() embed.FS {
 type DataSource interface {
 	PopulateData() error
 	GetBookByID(id string) (Book, error)
-	GetBooks(page int, pageSize int) ([]Book, error)
+	GetBooks(page int, pageSize int, search string) ([]Book, error)
+	GetBooksCount(search string) (int64, error)
 }
 
 type Router interface {
@@ -22,8 +23,7 @@ type Router interface {
 }
 
 func Use(ds DataSource, r Router) {
-	bookRepository := NewBookRepository(ds)
-	service := NewService(bookRepository)
+	service := NewService(ds)
 
 	if err := ds.PopulateData(); err != nil {
 		panic(err)

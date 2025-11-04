@@ -1,24 +1,35 @@
 package mockapi
 
 type service struct {
-	repository BookRepository
+	dataSource DataSource
 }
 
 type Service interface {
 	GetBookByID(id string) (Book, error)
-	GetBooks(page int, pageSize int) ([]Book, error)
+	GetBooks(page int, pageSize int, search string) (PaginatedBooks, error)
 }
 
-func NewService(repository BookRepository) Service {
+func NewService(dataSource DataSource) Service {
 	return &service{
-		repository: repository,
+		dataSource: dataSource,
 	}
 }
 
 func (s *service) GetBookByID(id string) (Book, error) {
-	return s.repository.GetBookByID(id)
+	return s.dataSource.GetBookByID(id)
 }
 
-func (s *service) GetBooks(page int, pageSize int) ([]Book, error) {
-	return s.repository.GetBooks(page, pageSize)
+func (s *service) GetBooks(page int, pageSize int, search string) (PaginatedBooks, error) {
+	books, err := s.dataSource.GetBooks(page, pageSize, search)
+	totalCount, err := s.dataSource.GetBooksCount(search)
+	if err != nil {
+		return PaginatedBooks{}, err
+	}
+	return PaginatedBooks{
+		Data:       books,
+		TotalItems: totalCount,
+		TotalPages: int((totalCount + int64(pageSize) - 1) / int64(pageSize)),
+		Page:       page,
+		PageSize:   pageSize,
+	}, nil
 }
