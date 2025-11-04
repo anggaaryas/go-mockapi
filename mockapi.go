@@ -7,14 +7,14 @@ import (
 //go:embed static/*
 var staticFiles embed.FS
 
-var staticPath = "/mockapi/static"
+var mockapiPath = "/mockapi"
 
 func GetStaticFiles() embed.FS {
 	return staticFiles
 }
 
-func GetStaticPath() string {
-	return staticPath
+func GetMockapiPath() string {
+	return mockapiPath
 }
 
 type DataSource interface {
