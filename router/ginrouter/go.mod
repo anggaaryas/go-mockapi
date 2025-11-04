@@ -3,7 +3,7 @@ module github.com/anggaaryas/go-mockapi/router/ginrouter
 go 1.25.1
 
 require (
-	github.com/anggaaryas/go-mockapi v0.0.0-20251104103152-baef04fa320f
+	github.com/anggaaryas/go-mockapi v0.0.0-20251104112049-ece76b23d69b
 	github.com/gin-gonic/gin v1.11.0
 )
 

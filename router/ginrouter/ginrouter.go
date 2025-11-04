@@ -66,7 +66,8 @@ func (cfg *config) SetupMockApiRoute(service mockapi.Service) error {
 	api.GET("/books", func(c *gin.Context) {
 		page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
 		pageSize, _ := strconv.Atoi(c.DefaultQuery("page_size", "10"))
-		books, err := service.GetBooks(page, pageSize)
+		search := c.DefaultQuery("search", "")
+		books, err := service.GetBooks(page, pageSize, search)
 		if err != nil {
 			apiErr := cfg.getErrorResponse(err)
 			c.JSON(apiErr.StatusCode, apiErr)
